@@ -43,7 +43,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>360</y>
+     <y>400</y>
      <width>111</width>
      <height>16</height>
     </rect>
@@ -56,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>400</y>
+     <y>440</y>
      <width>111</width>
      <height>16</height>
     </rect>
@@ -69,7 +69,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>440</y>
+     <y>480</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -82,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>480</y>
+     <y>520</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -729,7 +729,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>350</y>
+     <y>390</y>
      <width>191</width>
      <height>31</height>
     </rect>
@@ -739,7 +739,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>390</y>
+     <y>430</y>
      <width>471</width>
      <height>31</height>
     </rect>
@@ -749,7 +749,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>430</y>
+     <y>470</y>
      <width>471</width>
      <height>31</height>
     </rect>
@@ -759,7 +759,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>470</y>
+     <y>510</y>
      <width>471</width>
      <height>31</height>
     </rect>
@@ -835,9 +835,9 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>520</y>
+     <y>560</y>
      <width>721</width>
-     <height>181</height>
+     <height>141</height>
     </rect>
    </property>
   </widget>
@@ -845,7 +845,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>530</y>
+     <y>570</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -865,6 +865,78 @@
    </property>
    <property name="text">
     <string>Добавить/Изменить</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>110</y>
+     <width>391</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Одно из полей: &quot;Фамилия&quot; или &quot;Имя&quot; - должно быть заполнено!</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_19">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>350</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Количество детей:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_20">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>350</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Количество супругов:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEditNumOfChild">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>340</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEditNumOfPartners">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>340</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_21">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>340</y>
+     <width>471</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Поля: &quot;Количество детей&quot; и &quot;Количество супругов&quot; - должны быть заполнены!</string>
    </property>
   </widget>
  </widget>

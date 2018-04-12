@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTextEdit>
+#include <QSignalMapper>
 #include "person.h"
 
 namespace Ui {
@@ -14,28 +14,35 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    //QTextEdit textEditCard;
 
-    static const int MaxPersons=500;
+    static const int MaxPersons = 500;
+
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    float getH() const;
-
-    float getW() const;
-    void addPerson(Person* person);
+    void addPerson(Person *person);
+    Person *getMwPersonOfSignal() const;
 
 private:
     Ui::MainWindow *ui;
-    float h;
-    float w;
 
-    Person** all;
-    QString generatePersonString(Person* person);
+    //Person** all;
+    QString generatePersonString(Person *person);
+    void setMwPersonOfSignal(Person *val);
+
+    Person *mwPersonOfSignal;
+    Person *firstPerson;
+
+    QSignalMapper *mapper;
+
+signals:
+
 
 private slots:
     on_personButton_clicked();
-    on_AddRelativeButton_clicked();
+    void on_AddRelativeButton_clicked();
+
+    //void clicked(Person *val);
 };
 
 #endif // MAINWINDOW_H

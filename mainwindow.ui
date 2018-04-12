@@ -27,39 +27,6 @@
      <string>add first person</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="AddRelativeButton">
-    <property name="geometry">
-     <rect>
-      <x>1030</x>
-      <y>520</y>
-      <width>31</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>+</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="textEditCard">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>460</y>
-      <width>171</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;
-</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <zorder>personButton</zorder>
-   <zorder>textEditCard</zorder>
-   <zorder>AddRelativeButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

@@ -1,4 +1,5 @@
 #include "person.h"
+#include "addrelativewindow.h"
 
 int Person::id = 0;
 
@@ -192,46 +193,6 @@ void Person::setId(int value)
     id = value;
 }
 
-int* Person::getMother() const
-{
-    return mother;
-}
-
-void Person::setMother(int *value)
-{
-    mother = value;
-}
-
-int* Person::getFather() const
-{
-    return father;
-}
-
-void Person::setFather(int *value)
-{
-    father = value;
-}
-
-int **Person::getSon() const
-{
-    return son;
-}
-
-void Person::setSon(int **value)
-{
-    son = value;
-}
-
-int **Person::getPartner() const
-{
-    return partner;
-}
-
-void Person::setPartner(int **value)
-{
-    partner = value;
-}
-
 QString Person::getYearBStr() const
 {
     return yearBStr;
@@ -252,6 +213,123 @@ void Person::setYearDStr(const QString &value)
     yearDStr = value;
 }
 
+QString Person::getOtherInf() const
+{
+    return otherInf;
+}
+
+void Person::setOtherInf(const QString &value)
+{
+    otherInf = value;
+}
+
+QLabel *Person::getPersonCardLabel() const
+{
+    return personCardLabel;
+}
+
+void Person::setPersonCardLabel(QLabel *value, float _x, float _y)
+{
+    personCardLabel = new QLabel();
+    personCardLabel = value;
+    personCardLabel->setStyleSheet("QLabel {"
+                                              "border-style: solid;"
+                                              "border-width: 1px;"
+                                              "border-color: black; "
+                                              "font-size: 12pt;"
+                                              "background-color: white;"
+                                              "}");
+    personCardLabel->setGeometry(_x, _y, labelWidth, labelHeight);
+}
+
+QPushButton *Person::getAddRelativeButton() const
+{
+    return addRelativeButton;
+}
+
+void Person::setAddRelativeButton(QPushButton *value)
+{
+    addRelativeButton = new QPushButton();
+    addRelativeButton = value;
+    addRelativeButton->setText("+");
+}
+
+int Person::getNumOfPartner() const
+{
+    return numOfPartner;
+}
+
+void Person::setNumOfPartner(int value)
+{
+    numOfPartner = value;
+    partner = new int[numOfPartner];
+    currentNumOfPartner = 0;
+}
+
+int Person::getNumOfChild() const
+{
+    return numOfChild;
+}
+
+void Person::setNumOfChild(int value)
+{
+    numOfChild = value;
+    child = new int[numOfChild];
+    currentNumOfChild = 0;
+}
+
+int *Person::getPartner() const
+{
+    return partner;
+}
+
+void Person::setPartner(int value)
+{
+    partner[currentNumOfPartner] = value;
+    currentNumOfPartner++;
+}
+
+int *Person::getChild() const
+{
+    return child;
+}
+
+void Person::setChild(int value)
+{
+    child[currentNumOfChild] = value;
+    currentNumOfChild++;
+}
+
+int Person::getFather() const
+{
+    return father;
+}
+
+void Person::setFather(int value)
+{
+    father = value;
+}
+
+int Person::getMother() const
+{
+    return mother;
+}
+
+void Person::setMother(int value)
+{
+    mother = value;
+}
+
+int Person::getCurrentNumOfChild() const
+{
+    return currentNumOfChild;
+}
+
+void Person::setCurrentNumOfChild(int value)
+{
+    currentNumOfChild = value;
+}
+
 Person::Person(){
     id++;
     name = "";
@@ -270,4 +348,7 @@ Person::Person(){
     education = "";
     work = "";
     photoURL = "";
+    otherInf = "";
+    mother = 0;
+    father = 0;
 }

@@ -1,8 +1,10 @@
-#ifndef PERSON_H
-#define PERSON_H
+#ifndef PERson_H
+#define PERson_H
 
 #include <QString>
 #include <QObject>
+#include <QLabel>
+#include <QPushButton>
 
 class Person:public QObject
 {
@@ -27,18 +29,30 @@ private:
     QString education;
     QString work;
     QString photoURL;
+    QString otherInf;
+    int numOfPartner;
+    int numOfChild;
+    int currentNumOfChild;
+    int currentNumOfPartner;
 
     float x;    //координаты центра "карточки" для отрисовки
     float y;
 
-    int* mother;
-    int* father;
-    int** son;
-    int** partner;
+    int mother;
+    int father;
+    int *child;
+    int *partner;
+
+    QLabel *personCardLabel;
+    QPushButton *addRelativeButton;
 
 public:
     Person();
     ~Person(){}
+
+    static const int labelHeight = 91;
+    static const int labelWidth = 171;
+
 
     QString getName() const;
     void setName(const QString &value);
@@ -97,25 +111,43 @@ public:
     static int getId();
     static void setId(int value);
 
-    int *getMother() const;
-    void setMother(int *value);
-
-    int *getFather() const;
-    void setFather(int *value);
-
-    int **getSon() const;
-    void setSon(int **value);
-
-    int **getPartner() const;
-    void setPartner(int **value);
-
     QString getYearBStr() const;
     void setYearBStr(const QString &value);
 
     QString getYearDStr() const;
     void setYearDStr(const QString &value);
 
+    QString getOtherInf() const;
+    void setOtherInf(const QString &value);
+
+    QLabel *getPersonCardLabel() const;
+    void setPersonCardLabel(QLabel *value, float _x, float _y);
+
+    QPushButton *getAddRelativeButton() const;
+    void setAddRelativeButton(QPushButton *value);
+
+    int getNumOfPartner() const;
+    void setNumOfPartner(int value);
+
+    int getNumOfChild() const;
+    void setNumOfChild(int value);
+
+    int *getPartner() const;
+    void setPartner(int value);
+
+    int *getChild() const;
+    void setChild(int value);
+
+    int getFather() const;
+    void setFather(int value);
+
+    int getMother() const;
+    void setMother(int value);
+
+    int getCurrentNumOfChild() const;
+    void setCurrentNumOfChild(int value);
+
 private slots:
 };
 
-#endif // PERSON_H
+#endif // PERson_H
