@@ -3,8 +3,10 @@
 
 #include <QString>
 #include <QObject>
-#include <QLabel>
-#include <QPushButton>
+
+//#include "personview.h"
+
+class PersonView;
 
 class Person:public QObject
 {
@@ -17,10 +19,12 @@ private:
     QString sex;
     bool dead;
     int dayB;
+    QString dayBStr;
     QString monthB;
     int yearB;
     QString yearBStr;
     int dayD;
+    QString dayDStr;
     QString monthD;
     int yearD;
     QString yearDStr;
@@ -34,25 +38,22 @@ private:
     int numOfChild;
     int currentNumOfChild;
     int currentNumOfPartner;
+    QString numOfPartnerStr;
+    QString numOfChildStr;
 
-    float x;    //координаты центра "карточки" для отрисовки
-    float y;
 
     int mother;
     int father;
     int *child;
     int *partner;
 
-    QLabel *personCardLabel;
-    QPushButton *addRelativeButton;
+    PersonView *personView;
 
 public:
     Person();
     ~Person(){}
 
-    static const int labelHeight = 91;
-    static const int labelWidth = 171;
-
+    QString generatePersonString();
 
     QString getName() const;
     void setName(const QString &value);
@@ -102,12 +103,6 @@ public:
     QString getPhotoURL() const;
     void setPhotoURL(const QString &value);
 
-    float getX() const;
-    void setX(float value);
-
-    float getY() const;
-    void setY(float value);
-
     static int getId();
     static void setId(int value);
 
@@ -119,12 +114,6 @@ public:
 
     QString getOtherInf() const;
     void setOtherInf(const QString &value);
-
-    QLabel *getPersonCardLabel() const;
-    void setPersonCardLabel(QLabel *value, float _x, float _y);
-
-    QPushButton *getAddRelativeButton() const;
-    void setAddRelativeButton(QPushButton *value);
 
     int getNumOfPartner() const;
     void setNumOfPartner(int value);
@@ -147,7 +136,16 @@ public:
     int getCurrentNumOfChild() const;
     void setCurrentNumOfChild(int value);
 
-private slots:
+    PersonView *getPersonView() const;
+    void setPersonView(PersonView *value);
+    QString getDayBStr() const;
+    void setDayBStr(const QString &value);
+    QString getDayDStr() const;
+    void setDayDStr(const QString &value);
+    QString getNumOfPartnerStr() const;
+    void setNumOfPartnerStr(const QString &value);
+    QString getNumOfChildStr() const;
+    void setNumOfChildStr(const QString &value);
 };
 
 #endif // PERson_H

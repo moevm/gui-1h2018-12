@@ -2,7 +2,14 @@
 #define ADDRELATIVEWINDOW_H
 
 #include <QWidget>
-#include "mainwindow.h"
+
+//#include "mainwindow.h"
+//#include "person.h"
+//#include "personwindow.h"
+
+class personwindow;
+class MainWindow;
+class Person;
 
 namespace Ui {
 class addrelativewindow;

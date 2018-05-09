@@ -2,7 +2,10 @@
 #define PERsonWINDOW_H
 
 #include <QWidget>
-#include "mainwindow.h"
+
+class MainWindow;
+class Person;
+
 
 namespace Ui {
 class personwindow;
@@ -17,11 +20,8 @@ public:
     ~personwindow();
 
     void setFatherWindow(MainWindow *father);
-
     void setPersonOfSignal(Person *val1, QString val2);
-
-    static const int spaceToParentX = 40;
-    static const int spaceToParentY = 30;
+    void addInfo(Person *person);
 
 private slots:
     void on_pushButton_clicked();
@@ -32,6 +32,11 @@ private:
     Person *person;
     Person *personOfSignal;
     QString whoRelativeAdd;
+    bool isChange;
+
+    void addNewPerson();
+    void changePerson();
+    void fromFormToPerson();
 
     Ui::personwindow *ui;
 };

@@ -2,8 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSignalMapper>
-#include "person.h"
+
+class PersonView;
+class Person;
+class personwindow;
 
 namespace Ui {
 class MainWindow;
@@ -19,30 +21,29 @@ public:
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void addPerson(Person *person, QString whoRelativeAdd, Person *personOfSignal);
+    void updateLabel(Person *person);
 
-    void addPerson(Person *person);
+    void paintEvent(QPaintEvent *);
+
     Person *getMwPersonOfSignal() const;
 
 private:
     Ui::MainWindow *ui;
 
-    //Person** all;
-    QString generatePersonString(Person *person);
-    void setMwPersonOfSignal(Person *val);
-
     Person *mwPersonOfSignal;
-    Person *firstPerson;
 
-    QSignalMapper *mapper;
+    //Person** all;
 
-signals:
+    QString generatePersonString(Person *person);
 
+    bool isVert = false;
+    PersonView *personView;
+    PersonView *viewOfSignal;
+    QPixmap   m_Pixmap;
 
 private slots:
     on_personButton_clicked();
-    void on_AddRelativeButton_clicked();
-
-    //void clicked(Person *val);
 };
 
 #endif // MAINWINDOW_H

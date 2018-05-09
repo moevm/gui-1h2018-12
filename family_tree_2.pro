@@ -28,13 +28,15 @@ SOURCES += \
         mainwindow.cpp \
     personwindow.cpp \
     person.cpp \
-    addrelativewindow.cpp
+    addrelativewindow.cpp \
+    personview.cpp
 
 HEADERS += \
         mainwindow.h \
     personwindow.h \
     person.h \
-    addrelativewindow.h
+    addrelativewindow.h \
+    personview.h
 
 FORMS += \
         mainwindow.ui \

@@ -1,7 +1,9 @@
 #include "addrelativewindow.h"
-#include "ui_addrelativewindow.h"
-#include "personwindow.h"
 #include "mainwindow.h"
+#include "person.h"
+#include "personwindow.h"
+
+#include "ui_addrelativewindow.h"
 
 addrelativewindow::addrelativewindow(QWidget *parent) :
     QWidget(parent),

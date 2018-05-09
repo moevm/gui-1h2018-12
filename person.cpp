@@ -1,5 +1,5 @@
 #include "person.h"
-#include "addrelativewindow.h"
+#include "personview.h"
 
 int Person::id = 0;
 
@@ -163,26 +163,6 @@ void Person::setPhotoURL(const QString &value)
     photoURL = value;
 }
 
-float Person::getX() const
-{
-    return x;
-}
-
-void Person::setX(float value)
-{
-    x = value;
-}
-
-float Person::getY() const
-{
-    return y;
-}
-
-void Person::setY(float value)
-{
-    y = value;
-}
-
 int Person::getId()
 {
     return id;
@@ -221,37 +201,6 @@ QString Person::getOtherInf() const
 void Person::setOtherInf(const QString &value)
 {
     otherInf = value;
-}
-
-QLabel *Person::getPersonCardLabel() const
-{
-    return personCardLabel;
-}
-
-void Person::setPersonCardLabel(QLabel *value, float _x, float _y)
-{
-    personCardLabel = new QLabel();
-    personCardLabel = value;
-    personCardLabel->setStyleSheet("QLabel {"
-                                              "border-style: solid;"
-                                              "border-width: 1px;"
-                                              "border-color: black; "
-                                              "font-size: 12pt;"
-                                              "background-color: white;"
-                                              "}");
-    personCardLabel->setGeometry(_x, _y, labelWidth, labelHeight);
-}
-
-QPushButton *Person::getAddRelativeButton() const
-{
-    return addRelativeButton;
-}
-
-void Person::setAddRelativeButton(QPushButton *value)
-{
-    addRelativeButton = new QPushButton();
-    addRelativeButton = value;
-    addRelativeButton->setText("+");
 }
 
 int Person::getNumOfPartner() const
@@ -330,6 +279,69 @@ void Person::setCurrentNumOfChild(int value)
     currentNumOfChild = value;
 }
 
+QString Person::generatePersonString(){
+   QString str = name + " " + surname + " " + "\n";
+   if(yearBStr != "" || yearDStr != ""){
+       str += "(" + yearBStr + "-";
+       if (dead)
+          str += yearDStr;
+       else
+           str += "now";
+       str += ")";
+   }
+   return str;
+}
+
+PersonView *Person::getPersonView() const
+{
+    return personView;
+}
+
+void Person::setPersonView(PersonView *value)
+{
+    personView = value;
+}
+
+QString Person::getDayBStr() const
+{
+    return dayBStr;
+}
+
+void Person::setDayBStr(const QString &value)
+{
+    dayBStr = value;
+}
+
+QString Person::getDayDStr() const
+{
+    return dayDStr;
+}
+
+void Person::setDayDStr(const QString &value)
+{
+    dayDStr = value;
+}
+
+QString Person::getNumOfPartnerStr() const
+{
+    return numOfPartnerStr;
+}
+
+void Person::setNumOfPartnerStr(const QString &value)
+{
+    numOfPartnerStr = value;
+}
+
+QString Person::getNumOfChildStr() const
+{
+    return numOfChildStr;
+}
+
+void Person::setNumOfChildStr(const QString &value)
+{
+    numOfChildStr = value;
+}
+
 Person::Person(){
     id++;
     name = "";
@@ -351,4 +363,5 @@ Person::Person(){
     otherInf = "";
     mother = 0;
     father = 0;
+
 }
