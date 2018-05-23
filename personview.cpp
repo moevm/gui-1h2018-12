@@ -5,6 +5,36 @@
 #include "addrelativewindow.h"
 #include "personwindow.h"
 
+QLabel *PersonView::getPersonCardLabel() const
+{
+    return personCardLabel;
+}
+
+void PersonView::setPersonCardLabel(QLabel *value)
+{
+    personCardLabel = value;
+}
+
+QPushButton *PersonView::getAddRelativeButton() const
+{
+    return addRelativeButton;
+}
+
+void PersonView::setAddRelativeButton(QPushButton *value)
+{
+    addRelativeButton = value;
+}
+
+QPushButton *PersonView::getInfoButton() const
+{
+    return infoButton;
+}
+
+void PersonView::setInfoButton(QPushButton *value)
+{
+    infoButton = value;
+}
+
 PersonView::PersonView(Person* person, MainWindow *mwFather)
 {
     this->mwFather = mwFather;
@@ -17,7 +47,8 @@ void PersonView::UpdateLabel() {
 }
 
 void PersonView::addButton() {
-    personCardLabel = new QLabel(mwFather);
+    personCardLabel = new QLabel(mwFather/*->scroll*/);
+    //mwFather->scroll->setWidget(personCardLabel);
     personCardLabel->setText(person->generatePersonString());
     personCardLabel->setStyleSheet("QLabel {"
                                               "border-style: solid;"
@@ -29,7 +60,8 @@ void PersonView::addButton() {
     personCardLabel->setGeometry(getX(), getY(), labelWidth, labelHeight);
 
 
-    addRelativeButton = new QPushButton(mwFather);
+    addRelativeButton = new QPushButton(mwFather/*->scroll*/);
+    //mwFather->scroll->setWidget(addRelativeButton);
     addRelativeButton->setText("+");
     addRelativeButton->setGeometry(getX() + labelWidth - plusButtonWidth, getY() + labelHeight - plusButtonHeight, plusButtonWidth, plusButtonHeight);
 
@@ -40,9 +72,9 @@ void PersonView::addButton() {
     personCardLabel->setVisible(true);
     addRelativeButton->setVisible(true);
     infoButton->setVisible(true);
-//mwFather->getMwPersonOfSignal()->getPersonView()
-    //mwFather->getMwPersonOfSignal()
 
+    //mwFather->getMwPersonOfSignal()->getPersonView()
+    //mwFather->getMwPersonOfSignal()
 
     connect(addRelativeButton, SIGNAL(clicked()), this, SLOT(on_addRelativeButton_clicked()));
     connect(infoButton, SIGNAL(clicked()), this, SLOT(on_infoButton_clicked()));

@@ -1,7 +1,6 @@
 #include "person.h"
 #include "personview.h"
 
-int Person::id = 0;
 
 QString Person::getName() const
 {
@@ -203,17 +202,17 @@ void Person::setOtherInf(const QString &value)
     otherInf = value;
 }
 
-int Person::getNumOfPartner() const
-{
-    return numOfPartner;
-}
+//int Person::getNumOfPartner() const
+//{
+//    return numOfPartner;
+//}
 
-void Person::setNumOfPartner(int value)
-{
-    numOfPartner = value;
-    partner = new int[numOfPartner];
-    currentNumOfPartner = 0;
-}
+//void Person::setNumOfPartner(int value)
+//{
+//    numOfPartner = value;
+//    partner = new Person*[numOfPartner];
+//    currentNumOfPartner = 0;
+//}
 
 int Person::getNumOfChild() const
 {
@@ -223,50 +222,8 @@ int Person::getNumOfChild() const
 void Person::setNumOfChild(int value)
 {
     numOfChild = value;
-    child = new int[numOfChild];
+    child = new Person*[numOfChild];
     currentNumOfChild = 0;
-}
-
-int *Person::getPartner() const
-{
-    return partner;
-}
-
-void Person::setPartner(int value)
-{
-    partner[currentNumOfPartner] = value;
-    currentNumOfPartner++;
-}
-
-int *Person::getChild() const
-{
-    return child;
-}
-
-void Person::setChild(int value)
-{
-    child[currentNumOfChild] = value;
-    currentNumOfChild++;
-}
-
-int Person::getFather() const
-{
-    return father;
-}
-
-void Person::setFather(int value)
-{
-    father = value;
-}
-
-int Person::getMother() const
-{
-    return mother;
-}
-
-void Person::setMother(int value)
-{
-    mother = value;
 }
 
 int Person::getCurrentNumOfChild() const
@@ -322,15 +279,15 @@ void Person::setDayDStr(const QString &value)
     dayDStr = value;
 }
 
-QString Person::getNumOfPartnerStr() const
-{
-    return numOfPartnerStr;
-}
+//QString Person::getNumOfPartnerStr() const
+//{
+//    return numOfPartnerStr;
+//}
 
-void Person::setNumOfPartnerStr(const QString &value)
-{
-    numOfPartnerStr = value;
-}
+//void Person::setNumOfPartnerStr(const QString &value)
+//{
+//    numOfPartnerStr = value;
+//}
 
 QString Person::getNumOfChildStr() const
 {
@@ -342,8 +299,183 @@ void Person::setNumOfChildStr(const QString &value)
     numOfChildStr = value;
 }
 
+Person *Person::getMother() const
+{
+    return mother;
+}
+
+void Person::setMother(Person *value)
+{
+    mother = value;
+}
+
+Person *Person::getFather() const
+{
+    return father;
+}
+
+void Person::setFather(Person *value)
+{
+    father = value;
+}
+
+Person **Person::getChild() const
+{
+    return child;
+}
+
+void Person::setChild(Person *value)
+{
+    child[currentNumOfChild] = value;
+    currentNumOfChild++;
+}
+
+Person* Person::getPartner() const
+{
+    return partner;
+}
+
+Person* Person::getMyPartner()
+{
+    if (partner != NULL) {
+        return partner;
+    } else {
+        return NULL;
+    }
+}
+
+
+void Person::setPartner(Person *value)
+{
+    partner = value;
+}
+
+QString Person::generateAllDataPersonString() {
+    QString data = "";
+    if(name != ""){
+        data += name;
+    }else{
+        data += " null";
+    }
+    if(surname != ""){
+        data += " " + surname;
+    }else{
+        data += " null";
+    }
+    if(patronymic != ""){
+        data += " " + patronymic;
+    }else{
+        data += " null";
+    }
+    data += " " + sex;
+    data += " " + QString::number(dead);
+    if(dayBStr != ""){
+        data += " " + dayBStr;
+    }else{
+        data += " null";
+    }
+    if(monthB != ""){
+        data += " " + monthB;
+    }else{
+        data += " null";
+    }
+    if(yearBStr != ""){
+        data += " " + yearBStr;
+    }else{
+        data += " null";
+    }
+    if(dayDStr != ""){
+        data += " " + dayDStr;
+    }else{
+        data += " null";
+    }
+    if(monthD != ""){
+        data += " " + monthD;
+    }else{
+        data += " null";
+    }
+    if(yearDStr != ""){
+        data += " " + yearDStr;
+    }else{
+        data += " null";
+    }
+    if(maidenSurname != ""){
+        data += " " + maidenSurname;
+    }else{
+        data += " null";
+    }
+    if(work != ""){
+        data += " " + work;
+    }else{
+        data += " null";
+    }
+    if(education != ""){
+        data += " " + education;
+    }else{
+        data += " null";
+    }
+    if(photoURL != ""){
+        data += " " + photoURL;
+    }else{
+        data += " null";
+    }
+    if(otherInf != ""){
+        data += " " + otherInf;
+    }else{
+        data += " null";
+    }
+    data += " " + numOfChildStr;
+    data += " " + QString::number(currentNumOfChild);
+
+    /*if (mother != NULL) {
+        data += " " + QString::number(mother->getId());
+    } else {
+        data += " null";
+    }
+    if (father != NULL) {
+        data += " " + QString::number(father->getId());
+    } else {
+        data += " null";
+    }
+    for (int i = 0; i < currentNumOfChild; i++) {
+        data += " " + QString::number(child[i]->getId());
+    }*/
+    data += " " + QString::number(getPersonView()->getX()) + " " + QString::number(getPersonView()->getY());
+    return data;
+}
+
+/*void Person::readPerson(QTextStream in) {
+    in >> name;
+    in >> surname;
+    in >> patronymic;
+    in >> sex;
+    QString k;
+    in >> k;
+    if(k == "0"){
+        dead = false;
+    }else{
+        dead = true;
+    }
+    in >> dayBStr;
+    in >> monthB;
+    in >> yearBStr;
+    in >> dayDStr;
+    in >> monthD;
+    in >> yearDStr;
+    in >> maidenSurname;
+    in >> work;
+    in >> education;
+    in >> photoURL;
+    in >> otherInf;
+    in >> numOfChildStr;
+    in >> currentNumOfChild;
+    in >> k;
+    mother->setId(k.toInt());
+    in >> k;
+    father->setId(k.toInt());
+}*/
+
 Person::Person(){
-    id++;
     name = "";
     surname = "";
     patronymic = "";
@@ -361,7 +493,11 @@ Person::Person(){
     work = "";
     photoURL = "";
     otherInf = "";
-    mother = 0;
-    father = 0;
-
+    mother = NULL;
+    father = NULL;
+    partner = NULL;
+    dayBStr = "";
+    yearBStr = "";
+    dayDStr = "";
+    yearDStr = "";
 }

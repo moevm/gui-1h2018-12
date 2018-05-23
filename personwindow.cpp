@@ -16,6 +16,7 @@ personwindow::personwindow(QWidget *parent) :
     ui->textEditNumOfChild->setText("0");
     ui->textEditNumOfPartners->setText("0");
     isChange = false;
+    ui->textEditPhoto->setVisible(false);
 }
 
 personwindow::~personwindow()
@@ -37,9 +38,11 @@ void personwindow::fromFormToPerson() {
     person->setMonthB(ui->comboBoxMonthB->currentText());
     person->setYearB(ui->textEditYearB->toPlainText().toInt());
     person->setDead(ui->comboBoxLiveOrDie->currentIndex());
-    person->setDayD(ui->comboBoxDayD->currentText().toInt());
-    person->setMonthD(ui->comboBoxMonthD->currentText());
-    person->setYearD(ui->textEditYearD->toPlainText().toInt());
+    if(person->getDead() == true){
+        person->setDayD(ui->comboBoxDayD->currentText().toInt());
+        person->setMonthD(ui->comboBoxMonthD->currentText());
+        person->setYearD(ui->textEditYearD->toPlainText().toInt());
+    }
     person->setMaidenSurname(ui->textEditMaidenSurname->toPlainText());
     person->setEducation(ui->textEditEducation->toPlainText());
     person->setPlace(ui->textEditPlace->toPlainText());
@@ -49,8 +52,9 @@ void personwindow::fromFormToPerson() {
     person->setOtherInf(ui->textEditElse->toPlainText());
     person->setDayBStr(ui->comboBoxDayB->currentText());
     person->setDayDStr(ui->comboBoxDayD->currentText());
-    person->setNumOfPartnerStr(ui->textEditNumOfPartners->toPlainText());
+    //person->setNumOfPartnerStr(ui->textEditNumOfPartners->toPlainText());
     person->setNumOfChildStr(ui->textEditNumOfChild->toPlainText());
+    person->setPhotoURL(img);
 }
 
 void personwindow::addNewPerson() {
@@ -67,28 +71,35 @@ void personwindow::addNewPerson() {
     } else {
         person = new Person();
         person->setNumOfChild(ui->textEditNumOfChild->toPlainText().toInt());
-        person->setNumOfPartner(ui->textEditNumOfPartners->toPlainText().toInt());
+        //person->setNumOfPartner(ui->textEditNumOfPartners->toPlainText().toInt());
 
         if(whoRelativeAdd == "father"){
-            person->setChild(personOfSignal->getId());
-            personOfSignal->setFather(person->getId());
+            person->setChild(personOfSignal);
+            personOfSignal->setFather(person);
+            person->setPartner(personOfSignal->getMother());
         }
         if(whoRelativeAdd == "mother"){
-            person->setChild(personOfSignal->getId());
-            personOfSignal->setMother(person->getId());
+            person->setChild(personOfSignal);
+            personOfSignal->setMother(person);
+            person->setPartner(personOfSignal->getFather());
         }
         if(whoRelativeAdd == "partner"){
-            person->setPartner(personOfSignal->getId());
-            personOfSignal->setPartner(person->getId());
+            person->setPartner(personOfSignal);
+            personOfSignal->setPartner(person);
         }
         if(whoRelativeAdd == "child"){
             if(personOfSignal->getSex() == "Мужской"){
-                person->setFather(personOfSignal->getId());
+                person->setMother(personOfSignal->getMyPartner());
+                person->setFather(personOfSignal);
             }
             if(personOfSignal->getSex() == "Женский"){
-                person->setMother(personOfSignal->getId());
+                person->setMother(personOfSignal);
+                person->setFather(personOfSignal->getMyPartner());
             }
-            personOfSignal->setChild(person->getId());
+            personOfSignal->setChild(person);
+            if (personOfSignal->getMyPartner() != NULL) {
+                personOfSignal->getMyPartner()->setChild(person);
+            }
         }
         fromFormToPerson();
         parent->addPerson(person, whoRelativeAdd, personOfSignal);
@@ -130,8 +141,11 @@ void personwindow::addInfo(Person *person) {
     ui->textEditWork->setText(person->getWork());
     ui->textEditElse->setText(person->getOtherInf());
     ui->textEditNumOfChild->setText(person->getNumOfChildStr());
-    ui->textEditNumOfPartners->setText(person->getNumOfPartnerStr());
-
+    //ui->textEditNumOfPartners->setText(person->getNumOfPartnerStr());
+    QPixmap pixmap(person->getPhotoURL());
+    int w = ui->photo->width();
+    int h = ui->photo->height();
+    ui->photo->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     this->person = person;
     isChange = true;
@@ -164,3 +178,17 @@ void personwindow::setPersonOfSignal(Person *val1,  QString val2)
     whoRelativeAdd = val2;
 }
 
+void personwindow::on_choosePhoto_clicked()
+{
+    QString img = "";
+    ui->textEditPhoto->setVisible(true);
+    img = QFileDialog::getOpenFileName(this, tr("Open Image"), "/home/photo", tr("Image Files (*.png *.jpg *.bmp"));
+    if(img != ""){
+        ui->textEditPhoto->setText(img);
+    }
+    QPixmap pixmap(ui->textEditPhoto->toPlainText());
+    int w = ui->photo->width();
+    int h = ui->photo->height();
+    ui->photo->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
+    this->img = ui->textEditPhoto->toPlainText();
+}

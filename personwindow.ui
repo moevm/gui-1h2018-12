@@ -788,16 +788,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QGraphicsView" name="graphicsViewPhoto">
-   <property name="geometry">
-    <rect>
-     <x>700</x>
-     <y>40</y>
-     <width>191</width>
-     <height>211</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
@@ -939,6 +929,85 @@
     <string>Поля: &quot;Количество детей&quot; и &quot;Количество супругов&quot; - должны быть заполнены!</string>
    </property>
   </widget>
+  <widget class="QLabel" name="photo">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>50</y>
+     <width>181</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="choosePhoto">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>280</y>
+     <width>93</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Choose photo</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEditPhoto">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>130</y>
+     <width>104</width>
+     <height>51</height>
+    </rect>
+   </property>
+  </widget>
+  <zorder>textEditPhoto</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_7</zorder>
+  <zorder>label_9</zorder>
+  <zorder>comboBoxSex</zorder>
+  <zorder>textEditSurname</zorder>
+  <zorder>label_11</zorder>
+  <zorder>textEditName</zorder>
+  <zorder>comboBoxDayB</zorder>
+  <zorder>label_12</zorder>
+  <zorder>label_13</zorder>
+  <zorder>label_14</zorder>
+  <zorder>comboBoxMonthB</zorder>
+  <zorder>textEditYearB</zorder>
+  <zorder>comboBoxDayD</zorder>
+  <zorder>comboBoxMonthD</zorder>
+  <zorder>label_15</zorder>
+  <zorder>label_16</zorder>
+  <zorder>label_17</zorder>
+  <zorder>textEditYearD</zorder>
+  <zorder>textEditMaidenSurname</zorder>
+  <zorder>textEditPlace</zorder>
+  <zorder>textEditEducation</zorder>
+  <zorder>textEditWork</zorder>
+  <zorder>label_18</zorder>
+  <zorder>textEditPatronymic</zorder>
+  <zorder>label_10</zorder>
+  <zorder>comboBoxLiveOrDie</zorder>
+  <zorder>textEditElse</zorder>
+  <zorder>label_8</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_19</zorder>
+  <zorder>label_20</zorder>
+  <zorder>textEditNumOfChild</zorder>
+  <zorder>textEditNumOfPartners</zorder>
+  <zorder>label_21</zorder>
+  <zorder>photo</zorder>
+  <zorder>choosePhoto</zorder>
  </widget>
  <resources/>
  <connections/>

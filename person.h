@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QObject>
+#include <QTextStream>
 
 //#include "personview.h"
 
@@ -12,7 +13,7 @@ class Person:public QObject
 {
     Q_OBJECT
 private:
-    static int id;  //счетчик объектов
+    int id;  //счетчик объектов
     QString name;
     QString surname;
     QString patronymic;
@@ -42,16 +43,20 @@ private:
     QString numOfChildStr;
 
 
-    int mother;
-    int father;
-    int *child;
-    int *partner;
+    Person *mother;
+    Person *father;
+    Person **child;
+    Person *partner;
 
     PersonView *personView;
 
 public:
     Person();
     ~Person(){}
+
+    Person* getMyPartner();
+    QString generateAllDataPersonString();
+    //void readPerson(QTextStream in);
 
     QString generatePersonString();
 
@@ -103,8 +108,8 @@ public:
     QString getPhotoURL() const;
     void setPhotoURL(const QString &value);
 
-    static int getId();
-    static void setId(int value);
+    int getId();
+    void setId(int value);
 
     QString getYearBStr() const;
     void setYearBStr(const QString &value);
@@ -115,23 +120,11 @@ public:
     QString getOtherInf() const;
     void setOtherInf(const QString &value);
 
-    int getNumOfPartner() const;
-    void setNumOfPartner(int value);
+//    int getNumOfPartner() const;
+//    void setNumOfPartner(int value);
 
     int getNumOfChild() const;
     void setNumOfChild(int value);
-
-    int *getPartner() const;
-    void setPartner(int value);
-
-    int *getChild() const;
-    void setChild(int value);
-
-    int getFather() const;
-    void setFather(int value);
-
-    int getMother() const;
-    void setMother(int value);
 
     int getCurrentNumOfChild() const;
     void setCurrentNumOfChild(int value);
@@ -142,10 +135,18 @@ public:
     void setDayBStr(const QString &value);
     QString getDayDStr() const;
     void setDayDStr(const QString &value);
-    QString getNumOfPartnerStr() const;
-    void setNumOfPartnerStr(const QString &value);
+//    QString getNumOfPartnerStr() const;
+//    void setNumOfPartnerStr(const QString &value);
     QString getNumOfChildStr() const;
     void setNumOfChildStr(const QString &value);
+    Person *getMother() const;
+    void setMother(Person *value);
+    Person *getFather() const;
+    void setFather(Person *value);
+    Person **getChild() const;
+    void setChild(Person *value);
+    Person *getPartner() const;
+    void setPartner(Person *value);
 };
 
 #endif // PERson_H

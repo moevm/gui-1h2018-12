@@ -2,6 +2,7 @@
 #define PERsonWINDOW_H
 
 #include <QWidget>
+#include <QFileDialog>
 
 class MainWindow;
 class Person;
@@ -27,12 +28,15 @@ private slots:
     void on_pushButton_clicked();
     void on_comboBoxLiveOrDie_currentIndexChanged(const QString &arg1);
 
+    void on_choosePhoto_clicked();
+
 private:
     MainWindow *parent;
     Person *person;
     Person *personOfSignal;
     QString whoRelativeAdd;
     bool isChange;
+    QString img;
 
     void addNewPerson();
     void changePerson();

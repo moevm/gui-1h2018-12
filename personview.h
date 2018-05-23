@@ -35,7 +35,7 @@ public:
     static const int infoButtonWidth = 75;
 
     static const int spaceToParentX = 40;
-    static const int spaceToParentY = 30;
+    static const int spaceToParentY = 60;
 
     PersonView(Person *person, MainWindow *mwfather);
 
@@ -48,6 +48,15 @@ public:
     float getY() const;
     void setY(float value);
     void UpdateLabel();
+
+    QLabel *getPersonCardLabel() const;
+    void setPersonCardLabel(QLabel *value);
+
+    QPushButton *getAddRelativeButton() const;
+    void setAddRelativeButton(QPushButton *value);
+
+    QPushButton *getInfoButton() const;
+    void setInfoButton(QPushButton *value);
 
 public slots:
     void on_addRelativeButton_clicked();
