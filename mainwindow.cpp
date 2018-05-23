@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //m_Pixmap = QPixmap(width(), height());
     //m_Pixmap.fill(Qt::transparent);
-    m_Pixmap = QPixmap("C:\\Users\\Alyona\\Desktop\\family_tree_2_4it\\dd2.png");
+    m_Pixmap = QPixmap(":\dd2.png");
 
     /*scroll = new QScrollArea(this);
     QRect pos = ui->centralWidget->geometry();
@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     centralWidget()->setPalette(pal);*/
 
     QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(QPixmap("C:\\Users\\Alyona\\Desktop\\family_tree_2_4it\\dd2.png")));
+    palette.setBrush(QPalette::Window, QBrush(QPixmap(":\dd2.png")));
     setPalette(palette);
 
     //personButton = new QPushButton(this);
@@ -152,7 +152,7 @@ void MainWindow::paintEvent(QPaintEvent *){
     if(isSave){
         //m_Pixmap.load(":\test.png");
         QPalette palette;
-        palette.setBrush(QPalette::Window, QBrush(QPixmap("C:\\Users\\Alyona\\Desktop\\family_tree_2_4it\\test.png")));
+        palette.setBrush(QPalette::Window, QBrush(QPixmap(":\test.png")));
         setPalette(palette);
         isSave = false;
     }
@@ -280,7 +280,7 @@ void MainWindow::on_clearButton_clicked()
    //ui->personButton->setVisible(true);
 
    QPalette palette;
-   palette.setBrush(QPalette::Window, QBrush(QPixmap("C:\\Users\\Alyona\\Desktop\\family_tree_2_4it\\dd2.png")));
+   palette.setBrush(QPalette::Window, QBrush(QPixmap(":\dd2.png")));
    setPalette(palette);
 
    //connect(personButton, SIGNAL(clicked()), this, SLOT(on_personButton_clicked()));

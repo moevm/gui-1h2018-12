@@ -45,12 +45,7 @@ FORMS += \
     personwindow.ui \
     addrelativewindow.ui
 
-DISTFILES += \
-    derevo.jpg \
-    Tree.png \
-    test.png \
-    dd.jpg \
-    dd1.png \
-    dd2.png
+DISTFILES +=
 
-RESOURCES +=
+RESOURCES += \
+    pic2.qrc

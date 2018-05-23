@@ -28,7 +28,7 @@ void Persons::addNewPerson(Person* person) {
 }
 
 void Persons::saveAll() {
-    QFile file2("C:\\Users\\Alyona\\Desktop\\family_tree_2_4it\\test.png");
+    QFile file2(":\test.png");
     file2.open(QIODevice::WriteOnly);
     father->m_Pixmap.save(&file2, "PNG");
     file2.close();
