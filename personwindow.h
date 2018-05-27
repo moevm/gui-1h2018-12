@@ -24,12 +24,6 @@ public:
     void setPersonOfSignal(Person *val1, QString val2);
     void addInfo(Person *person);
 
-private slots:
-    void on_pushButton_clicked();
-    void on_comboBoxLiveOrDie_currentIndexChanged(const QString &arg1);
-
-    void on_choosePhoto_clicked();
-
 private:
     MainWindow *parent;
     Person *person;
@@ -41,8 +35,14 @@ private:
     void addNewPerson();
     void changePerson();
     void fromFormToPerson();
+    void init();
 
     Ui::personwindow *ui;
+
+private slots:
+    void on_pushButton_clicked();
+    void on_comboBoxLiveOrDie_currentIndexChanged(const QString &arg1);
+    void on_choosePhoto_clicked();
 };
 
 #endif // PERsonWINDOW_H

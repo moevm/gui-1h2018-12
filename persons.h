@@ -1,8 +1,10 @@
 #ifndef PERSONS_H
 #define PERSONS_H
+
 #include <QFile>
 #include <QTextStream>
 #include <QFileDialog>
+#include <QFileInfo>
 
 class Person;
 class PersonView;

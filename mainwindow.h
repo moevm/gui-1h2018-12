@@ -11,6 +11,7 @@ class Person;
 class Persons;
 class personwindow;
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -34,8 +35,11 @@ public:
     //void drowLines(QList<QPair<QPair<int, int>, QPair<int, int>>> list);
 
     QPixmap  m_Pixmap;
+    QString fileName;
     bool isSave;
     bool isVert = false;
+
+    QPushButton *personButton;
 
 private:
     Ui::MainWindow *ui;
@@ -44,18 +48,22 @@ private:
 
     Persons *allPersons;
 
-    QPushButton *personButton;
-
     QString whoAddRelative;
     Person *personOfSignal;
     Person *person;
 
+    int buttonHeight = 50;
+    int buttonWidth = 113;
+    float windowHeight = 1055;
+    float windowWidth = 1924;
+
     QString generatePersonString(Person *person);
+    void init();
 
 private slots:
-    on_personButton_clicked();
-    on_saveButton_clicked();
-    on_openButton_clicked();
+    void on_personButton_clicked();
+    void on_saveButton_clicked();
+    void on_openButton_clicked();
     void on_clearButton_clicked();
 };
 

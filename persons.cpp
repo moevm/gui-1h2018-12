@@ -3,10 +3,6 @@
 #include "mainwindow.h"
 #include "personview.h"
 
-//#include "QList"
-//#include <QPair>
-//#include <QListIterator>
-
 Persons::Persons(MainWindow *father)
 {
     all = new Person*[MaxPersons];      //массив, хранящий всю семью
@@ -28,13 +24,14 @@ void Persons::addNewPerson(Person* person) {
 }
 
 void Persons::saveAll() {
-    QFile file2(":\test.png");
+    QString fileName = QFileDialog::getOpenFileName(0, "Open Dialog", "", "*.txt");
+    QFile *file = new QFile(fileName);
+    QFileInfo qfi(file->fileName());
+    QFile file2(qfi.dir().path() + "/pix_" + qfi.baseName() + ".png");
     file2.open(QIODevice::WriteOnly);
     father->m_Pixmap.save(&file2, "PNG");
     file2.close();
 
-    QString fileName = QFileDialog::getOpenFileName(0, "Open Dialog", "", "*.txt");
-    QFile *file = new QFile(fileName);
     if (file->open(QIODevice::WriteOnly)) {
         QTextStream out(file);
         out << QString::number(numOfPersons);
@@ -66,14 +63,17 @@ void Persons::readAll() {
     QString fileName = QFileDialog::getOpenFileName(0, "Open Dialog", "", "*.txt");
     QFile file(fileName);
     if (file.open(QIODevice::ReadOnly)) {
+        QFileInfo qfi(file.fileName());
+        father->fileName = qfi.dir().path() + "/pix_" + qfi.baseName() + ".png";
         clear();
+        father->update();
         QTextStream in(&file);
         in >> numOfPersons;
         int k;
         QString str;
         Person* newPerson;
         PersonView* newPersonView;
-        for (int i = 0; i < numOfPersons; i++) {
+        for (int i = 0; i < numOfPersons; ++i) {
             newPerson = new Person();
             in >> k;
             newPerson->setId(k);
@@ -183,14 +183,22 @@ void Persons::readAll() {
             in >> k;
             newPerson->setCurrentNumOfChild(k);
 
-            /*in >> str;
-            newPerson->setMother(all[str.toInt()]);
             in >> str;
-            newPerson->setFather(all[k]);
-            for(int i = 0; i < newPerson->getCurrentNumOfChild(); i++){
+            if(str != "null"){
+                newPerson->setMotherId(str.toInt());
+            }
+            in >> str;
+            if(str != "null"){
+                newPerson->setFatherId(str.toInt());
+            }
+            in >> str;
+            if(str != "null"){
+                newPerson->setPartnerId(str.toInt());
+            }
+            for(int j = 0; j < newPerson->getCurrentNumOfChild(); ++j){
                 in >> k;
-                newPerson->setChild(all[k]);
-            }*/
+                newPerson->setChildId(k, j);
+            }
 
             newPersonView = new PersonView(newPerson, father);
             in >> k;
@@ -208,6 +216,24 @@ void Persons::readAll() {
         }
         //father->drowLines(list);*/
         father->isSave = true;
+        father->personButton->close();
+
+        for (int i = 0; i < numOfPersons; ++i) {
+            if(all[i]->getMotherId() >= 0){
+                all[i]->setMother(all[all[i]->getMotherId()]);
+            }
+            if(all[i]->getFatherId() >= 0){
+                all[i]->setFather(all[all[i]->getFatherId()]);
+            }
+            if(all[i]->getPartnerId() >= 0){
+                all[i]->setPartner(all[all[i]->getPartnerId()]);
+            }
+            int numOfChildsThere = all[i]->getCurrentNumOfChild();
+            all[i]->setCurrentNumOfChild(0);
+            for(int j = 0; j < numOfChildsThere; ++j){
+                all[i]->setChild(all[all[i]->getChildId()[j]]);
+            }
+        }
 
         file.close();
     }

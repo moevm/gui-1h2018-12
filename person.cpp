@@ -1,6 +1,6 @@
 #include "person.h"
 #include "personview.h"
-
+#include "mainwindow.h"
 
 QString Person::getName() const
 {
@@ -222,7 +222,9 @@ int Person::getNumOfChild() const
 void Person::setNumOfChild(int value)
 {
     numOfChild = value;
+    numOfChildStr = value;
     child = new Person*[numOfChild];
+    childId = new int[numOfChild];
     currentNumOfChild = 0;
 }
 
@@ -297,6 +299,10 @@ QString Person::getNumOfChildStr() const
 void Person::setNumOfChildStr(const QString &value)
 {
     numOfChildStr = value;
+    numOfChild = value.toInt();
+    child = new Person*[numOfChild];
+    childId = new int[numOfChild];
+    currentNumOfChild = 0;
 }
 
 Person *Person::getMother() const
@@ -427,7 +433,7 @@ QString Person::generateAllDataPersonString() {
     data += " " + numOfChildStr;
     data += " " + QString::number(currentNumOfChild);
 
-    /*if (mother != NULL) {
+    if (mother != NULL) {
         data += " " + QString::number(mother->getId());
     } else {
         data += " null";
@@ -437,9 +443,14 @@ QString Person::generateAllDataPersonString() {
     } else {
         data += " null";
     }
+    if (partner != NULL) {
+        data += " " + QString::number(partner->getId());
+    } else {
+        data += " null";
+    }
     for (int i = 0; i < currentNumOfChild; i++) {
         data += " " + QString::number(child[i]->getId());
-    }*/
+    }
     data += " " + QString::number(getPersonView()->getX()) + " " + QString::number(getPersonView()->getY());
     return data;
 }
@@ -475,6 +486,46 @@ QString Person::generateAllDataPersonString() {
     father->setId(k.toInt());
 }*/
 
+int Person::getMotherId() const
+{
+    return motherId;
+}
+
+void Person::setMotherId(int value)
+{
+    motherId = value;
+}
+
+int Person::getFatherId() const
+{
+    return fatherId;
+}
+
+void Person::setFatherId(int value)
+{
+    fatherId = value;
+}
+
+int *Person::getChildId() const
+{
+    return childId;
+}
+
+void Person::setChildId(int value, int num)
+{
+    childId[num] = value;
+}
+
+int Person::getPartnerId() const
+{
+    return partnerId;
+}
+
+void Person::setPartnerId(int value)
+{
+    partnerId = value;
+}
+
 Person::Person(){
     name = "";
     surname = "";
@@ -500,4 +551,7 @@ Person::Person(){
     yearBStr = "";
     dayDStr = "";
     yearDStr = "";
+    motherId = -1;
+    fatherId = -1;
+    partnerId = -1;
 }

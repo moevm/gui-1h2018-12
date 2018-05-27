@@ -10,18 +10,21 @@ personwindow::personwindow(QWidget *parent) :
     ui(new Ui::personwindow)
 {
     ui->setupUi(this);
-    on_comboBoxLiveOrDie_currentIndexChanged("Жив");
-    ui->label_3->setVisible(false);
-    ui->label_21->setVisible(false);
-    ui->textEditNumOfChild->setText("0");
-    ui->textEditNumOfPartners->setText("0");
-    isChange = false;
-    ui->textEditPhoto->setVisible(false);
+    init();
 }
 
 personwindow::~personwindow()
 {
     delete ui;
+}
+
+void personwindow::init(){
+    on_comboBoxLiveOrDie_currentIndexChanged("Жив");
+    ui->label_3->setVisible(false);
+    ui->label_21->setVisible(false);
+    ui->textEditNumOfChild->setText("0");
+    isChange = false;
+    ui->textEditPhoto->setVisible(false);
 }
 
 void personwindow::setFatherWindow(MainWindow *father)
@@ -54,6 +57,7 @@ void personwindow::fromFormToPerson() {
     person->setDayDStr(ui->comboBoxDayD->currentText());
     //person->setNumOfPartnerStr(ui->textEditNumOfPartners->toPlainText());
     person->setNumOfChildStr(ui->textEditNumOfChild->toPlainText());
+    person->setNumOfChild(ui->textEditNumOfChild->toPlainText().toInt());
     person->setPhotoURL(img);
 }
 
@@ -63,7 +67,7 @@ void personwindow::addNewPerson() {
                                    "color: red;"
                                    "}");
         ui->label_3->setVisible(true);
-    } else if(ui->textEditNumOfChild->toPlainText() == "" || ui->textEditNumOfPartners->toPlainText() == "") {
+    } else if(ui->textEditNumOfChild->toPlainText() == "") {
         ui->label_21->setStyleSheet("QLabel {"
                                    "color: red;"
                                    "}");
@@ -113,7 +117,6 @@ void personwindow::changePerson() {
     parent->updateLabel(person);
     this->close();
 }
-
 
 void personwindow::on_pushButton_clicked() {
     if (isChange) {

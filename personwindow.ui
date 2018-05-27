@@ -847,8 +847,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>770</x>
-     <y>520</y>
+     <x>780</x>
+     <y>720</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -883,19 +883,6 @@
     <string>Количество детей:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_20">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>350</y>
-     <width>141</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Количество супругов:</string>
-   </property>
-  </widget>
   <widget class="QTextEdit" name="textEditNumOfChild">
    <property name="geometry">
     <rect>
@@ -906,34 +893,34 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEditNumOfPartners">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>340</y>
-     <width>31</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_21">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>340</y>
+     <x>280</x>
+     <y>350</y>
      <width>471</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Поля: &quot;Количество детей&quot; и &quot;Количество супругов&quot; - должны быть заполнены!</string>
+    <string>Поле: &quot;Количество детей&quot;  - должно быть заполнено!</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEditPhoto">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>140</y>
+     <width>104</width>
+     <height>51</height>
+    </rect>
    </property>
   </widget>
   <widget class="QLabel" name="photo">
    <property name="geometry">
     <rect>
-     <x>700</x>
-     <y>50</y>
+     <x>730</x>
+     <y>60</y>
      <width>181</width>
      <height>221</height>
     </rect>
@@ -945,8 +932,8 @@
   <widget class="QPushButton" name="choosePhoto">
    <property name="geometry">
     <rect>
-     <x>740</x>
-     <y>280</y>
+     <x>780</x>
+     <y>330</y>
      <width>93</width>
      <height>41</height>
     </rect>
@@ -955,59 +942,6 @@
     <string>Choose photo</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEditPhoto">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>130</y>
-     <width>104</width>
-     <height>51</height>
-    </rect>
-   </property>
-  </widget>
-  <zorder>textEditPhoto</zorder>
-  <zorder>label</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label_6</zorder>
-  <zorder>label_7</zorder>
-  <zorder>label_9</zorder>
-  <zorder>comboBoxSex</zorder>
-  <zorder>textEditSurname</zorder>
-  <zorder>label_11</zorder>
-  <zorder>textEditName</zorder>
-  <zorder>comboBoxDayB</zorder>
-  <zorder>label_12</zorder>
-  <zorder>label_13</zorder>
-  <zorder>label_14</zorder>
-  <zorder>comboBoxMonthB</zorder>
-  <zorder>textEditYearB</zorder>
-  <zorder>comboBoxDayD</zorder>
-  <zorder>comboBoxMonthD</zorder>
-  <zorder>label_15</zorder>
-  <zorder>label_16</zorder>
-  <zorder>label_17</zorder>
-  <zorder>textEditYearD</zorder>
-  <zorder>textEditMaidenSurname</zorder>
-  <zorder>textEditPlace</zorder>
-  <zorder>textEditEducation</zorder>
-  <zorder>textEditWork</zorder>
-  <zorder>label_18</zorder>
-  <zorder>textEditPatronymic</zorder>
-  <zorder>label_10</zorder>
-  <zorder>comboBoxLiveOrDie</zorder>
-  <zorder>textEditElse</zorder>
-  <zorder>label_8</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_19</zorder>
-  <zorder>label_20</zorder>
-  <zorder>textEditNumOfChild</zorder>
-  <zorder>textEditNumOfPartners</zorder>
-  <zorder>label_21</zorder>
-  <zorder>photo</zorder>
-  <zorder>choosePhoto</zorder>
  </widget>
  <resources/>
  <connections/>
